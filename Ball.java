@@ -18,24 +18,25 @@ public class Ball {
 	}
 	
 	public void update() {
-		move();
+		moveX();
+		moveY();
+		x+=velX;
+		y+=velY;
 	}
 	
 	public void reverseDirection() {
 		velY = -velY;
 	}
 	
-	public void move() {
-		if (x+velX >= frameX-(radius))
+	public void moveX() {
+		if (x+velX >= frameX-(radius) || x <= 0)
 			velX=-velX;
-		else if (x <= 0)
-			velX=-velX;
-		if (y+velY > frameY-(radius+25))
+	}
+	
+	public void moveY()
+	{
+		if (y+velY > frameY-(radius+25) || y <= 0)
 			velY=-velY;
-		else if (y <= 0)
-			velY=-velY;
-		x+=velX;
-		y+=velY;
 	}
 	
 	public void draw(Graphics2D g2d) {
