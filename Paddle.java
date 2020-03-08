@@ -59,15 +59,13 @@ public class Paddle {
 	}
 	
 	public void keyReleased(KeyEvent e) {
-		if (id==0) {
-			if (e.getKeyCode() == KeyEvent.VK_A)
+		if (id==0)
+		{
+			if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_D)
 				vel = 0;
-			if (e.getKeyCode() == KeyEvent.VK_D)
-				vel = 0;
-		} else {
-			if (e.getKeyCode() == KeyEvent.VK_LEFT)
-				vel = 0;
-			if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+		}else
+		{
+			if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT)
 				vel = 0;
 		}
 	}
