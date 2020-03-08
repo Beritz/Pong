@@ -26,6 +26,12 @@ public class Table extends JPanel {
 		paddle1 = new Paddle(frameX, frameY, 0);
 		paddle2 = new Paddle(frameX, frameY, 1);
 		isPlaying = true;
+		addListener();
+		setFocusable(true);
+	}
+	
+	public void addListener()
+	{
 		addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {
 			}
@@ -38,7 +44,6 @@ public class Table extends JPanel {
 				paddle2.keyPressed(e);
 			}
 		});
-		setFocusable(true);
 	}
 	
 	public void win() {
@@ -64,17 +69,15 @@ public class Table extends JPanel {
 	public void checkPoints() {
 		if (ball.getY()<=0) {
 			paddle2.addPoint();
-//			System.out.println("player 2 points: " + paddle2.getPoints());
+			System.out.println("player 2 points: " + paddle2.getPoints());
 		} else if (ball.getY() + ball.getvelY()>=frameY-(ball.getRadius()+25)) { // TODO fix this shit
 			paddle1.addPoint();
-//			System.out.println("player 1 points: " + paddle1.getPoints());
+			System.out.println("player 1 points: " + paddle1.getPoints());
 		}
 	}
 	
 	public void checkIntersection() {
-		if (ball.getBounds().intersects(paddle1.getBounds()))
-			ball.reverseDirection();
-		else if (ball.getBounds().intersects(paddle2.getBounds()))
+		if (ball.getBounds().intersects(paddle1.getBounds()) || ball.getBounds().intersects(paddle2.getBounds()))
 			ball.reverseDirection();
 	}
 
